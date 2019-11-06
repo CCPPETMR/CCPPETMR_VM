@@ -31,7 +31,7 @@ $location/configure_gnome.sh
 mkdir -p ~/.jupyter
 #jupyter notebook --generate-config
 echo "c.NotebookApp.ip = '0.0.0.0'" > ~/.jupyter/jupyter_notebook_config.py
-echo "c.NotebookApp.notebook_dir = u'/home/sirfuser/devel/SIRF-Exercises/notebooks'" >> ~/.jupyter/jupyter_notebook_config.py
+echo "c.NotebookApp.notebook_dir = u'/home/sirfuser/devel/'" >> ~/.jupyter/jupyter_notebook_config.py
 #set a default password "virtual"
 jupyter notebook password
 

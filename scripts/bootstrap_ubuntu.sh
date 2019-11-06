@@ -64,8 +64,10 @@ cd $userHOME/devel
 if [ ! -d $userHOME/devel/CCPPETMR_VM ]; then
   git clone https://github.com/CCPPETMR/CCPPETMR_VM.git
   cd CCPPETMR_VM
+  git checkout symposium2019
 else
   cd CCPPETMR_VM
+  git checkout symposium2019
   git pull
 fi
 

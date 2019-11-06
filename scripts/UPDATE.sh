@@ -150,7 +150,9 @@ SuperBuild(){
         -DUSE_SYSTEM_HDF5=ON \
         -DBUILD_siemens_to_ismrmrd=On \
         -DUSE_ITK=ON \
-        -DDEVEL_BUILD=OFF
+        -DDEVEL_BUILD=OFF\
+        -DBUILD_CIL=ON\
+        -DNIFTYREG_USE_CUDA=OFF
   make -j${num_parallel}
 
   if [ ! -f ${SIRF_INSTALL_PATH}/share/gadgetron/config/gadgetron.xml ]
@@ -252,6 +254,22 @@ if [ -d STIR-exercises ]; then
   cd STIR-exercises
   git pull
 fi
+
+# install the CIL-Demos
+cd $SIRF_SRC_PATH
+if [ -d CIL-Demos ]; then
+  cd CIL-Demos
+  git pull
+else
+  git clone --depth=1 --branch symposium2019  https://github.com/vais-ral/CIL-Demos.git
+fi
+
+# update jupyter directory
+if [ -f ~/.jupyter/jupyter_notebook_config.py ] ; then
+  cat ~/.jupyter/jupyter_notebook_config.py | sed 's/SIRF-Exercises\/notebooks//g' > tmp
+  mv tmp ~/.jupyter/jupyter_notebook_config.py
+fi
+
 
 # copy help file to Desktop
 if [ ! -d ~/Desktop ]
